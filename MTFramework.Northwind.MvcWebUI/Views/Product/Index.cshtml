@@ -1,0 +1,46 @@
+﻿@model MTFramework.Northwind.MvcWebUI.Models.ProductListViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container pb-5">
+
+    <h2>Yeni Ürün</h2>
+    <hr />
+
+    <p>
+        @Html.ActionLink("Yeni Ürün", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+    <table class="table table-bordered table-striped">
+        <tr>
+           
+            <th>
+                Ürün Adı:
+            </th>
+
+           
+            <th style="width: 140px;"></th>
+        </tr>
+
+        @foreach (var product in Model.Products)
+        {
+            <tr>
+              
+                <td>
+                    @Html.DisplayFor(modelItem => product.ProductName)
+                </td>
+
+               
+                <td>
+                    @Html.ActionLink("Güncelle", "Edit", new { id = product.ProductId }, new { @class = "btn btn-primary btn-sm" })
+                    @Html.ActionLink("Sil", "Delete", new { id = product.ProductId }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>
+
